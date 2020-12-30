@@ -45,7 +45,7 @@ db = SQL("sqlite:///villageclub.db")
 @app.route("/")
 def index():
     """Show Welcome pageALL events and allow players to register for an event"""
-    return render_template("welcome.html")
+    return render_template("index.html")
 
 @app.route("/contact", methods=["GET","POST"])
 def contact():
