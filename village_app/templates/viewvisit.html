@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}
+Visitor information
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+        <legend>Visitor logbook</legend><br>
+        <p>Number of visitors = <strong>{{ number[0]["COUNT"] }}</strong></p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-back">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for visitor in visitors: %}
+              <tr>
+                <td>{{ visitor["id"] }}</td>
+                <td>{{ visitor["name"] }}</td>
+                <td>{{ visitor["email"] }}</td>
+                <td>{{ visitor["comments"] }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </fieldset>
+  </div>
+{% endblock %}

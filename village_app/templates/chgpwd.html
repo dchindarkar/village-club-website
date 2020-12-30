@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+Change password
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+      <legend>Password reset</legend><br>
+      <form action="/chgpwd" autocomplete="off" method="POST">
+        <div class="form-group">
+          <label for="Email1">Email address<span class="red">*</span></label><br>
+          <input type="email" class="form-control" id="Email1" name="username" aria-describedby="emailHelp" placeholder="Enter email" required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="Password1">Password<span class="red">*</span></label><br>
+          <input type="password" class="form-control" id="Password1" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="password2">New password<span class="red">*</span></label><br>
+            <input type="password" class="form-control" id="passowrd2" name="newpassword" placeholder="New password" required>
+        </div>
+        <div class="form-group">
+            <label for="password3">Confirm Password<span class="red">*</span></label><br>
+            <input type="password" class="form-control" id="password3" name="confirmation" placeholder="Re-enter new Password" required>
+        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </fieldset>
+</div>
+{% endblock %}

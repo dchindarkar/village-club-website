@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}
+View events
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <p id="date" class="red"></p>
+    <form action="/details" method="POST">
+      <fieldset>
+        <legend>Event schedule</legend><br>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-back">
+              <tr>
+                <th scope="col">Event ID</th>
+                <th scope="col">Type</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for event in events: %}
+              <tr>
+                <td>{{ event["id"] }}</th>
+                <td>{{ event["type"] }}</th>
+                <td>{{ event["venue"] }}</td>
+                <td>{{ event["date"] }}</td>
+                <td>{{ event["start_time"].split("T")[1] }}</td>
+                <td><input type="radio" id="event" name="event" value="{{ event["id"] }}"></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          </fieldset>
+            <button type="submit" class="btn btn-primary">Show details</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+          </fieldset>
+          </div>
+      </fieldset>
+    </form>
+  </div>
+  <script>
+    document.getElementById("date").innerHTML = Date();
+  </script>
+{% endblock %}

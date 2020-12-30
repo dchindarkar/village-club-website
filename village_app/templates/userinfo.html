@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %}
+Account information
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+      <legend>Account information</legend>
+      <div class="table-responsive">
+        <form action="/myprofile" method="POST">
+          <table class="table table-hover left">
+            <thead class="thead-back">
+              <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">{{ player_info[0]["username"] }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Title</strong></td>
+                <td>
+                    <select id="title" class="form-control" name="title">
+                      <option value ={{ player_info[0]["title"] }} selected>{{ player_info[0]["title"] }}</option>
+                      <option value="Mr.">Mr.</option>
+                      <option value="Mrs.">Mrs.</option>
+                      <option value="">Other</option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>First Name</strong></td>
+                <td><input type="text" class="form-control" name="first" value={{ player_info[0]["first"] }}></td>
+              </tr>
+              <tr>
+                <td><strong> Last Name </strong></td>
+                <td><input type="text" class="form-control" name="last" value={{ player_info[0]["last"] }}></td>
+              </tr>
+              <tr>
+                <td><strong> City </strong></td>
+                <td>
+                  <!input name="city" id="city" class="form-control" placeholder={{ player_info[0]["city"] }}>
+                    <select class="form-control" id="city" name="city">
+                        <option value={{ player_info[0]["city"] }}>{{ player_info[0]["city"] }}</option>
+                        <option value="Abbotsford">Abbotsford</option>
+                        <option value="Agassiz">Agassiz</option>
+                        <option value="Burnaby">Burnaby</option>
+                        <option value="Chilliwack">Chilliwack</option>
+                        <option value="Coquitlam">Coquitlam</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Hope">Hope</option>
+                        <option value="Langley">Langley</option>
+                        <option value="Maple Ridge">Maple Ridge</option>
+                        <option value="Mission">Mission</option>
+                        <option value="North Vancouver">North Vancouver</option>
+                        <option value="New Westminster">New Westminster</option>
+                        <option value="Pitt Meadows">Pitt Meadows</option>
+                        <option value="Port Coquitlam">Port Coquitlam</option>
+                        <option value="Port Moody">Port Moody</option>
+                        <option value="Surrey">Surrey</option>
+                        <option value="White Rock">White Rock</option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td><strong> Contact </strong></td>
+                <td><input type="tel" class="form-control" id="phone" name="phone"
+                  value={{ player_info[0]["phone"] }}
+                  placeholder="XXX-XXX-XXX"
+                  aria-describedby="phoneHelp"
+                  pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
+                  <small id="phoneHelp" class="form-text text-muted">Enter phone as XXX-XXX-XXXX</small></td>
+              </tr>
+              <tr>
+                <td><strong>Age</strong></td>
+                <td><input type="number" class="form-control" name="age" value={{ player_info[0]["age"] }}></td>
+              </tr>
+              <tr>
+                <td><strong> Membership Fee $</strong></td>
+                <td><input type="numeric" class="form-control" name="cash" value={{ player_info[0]["cash"] }}></td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">Update</button>
+          </table>
+        </form>
+      </div>
+    </fieldset>
+</div>
+<script>
+    document.querySelector('select').onchange = function () {
+        document.querySelector('select').value = this.value
+    }
+</script>
+{% endblock %}

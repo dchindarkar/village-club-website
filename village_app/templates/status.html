@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+Status
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+      <div class="table-responsive">
+        <div class="row">
+          <div class="col-sm-12">
+          {% if code == 100 %}
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+              <div class="card-header">Success</div>
+                <div class="card-body">
+                  <h4 class="card-title">{{ result["title"] }}</h4>
+                  <p class="card-text">{{ result["message"] }}</p>
+                </div>
+              </div>
+            </div>
+          {% elif code == 101 %}
+            <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+                <div class="card-header">Danger</div>
+                  <div class="card-body">
+                    <h4 class="card-title">{{ result["title"] }}</h4>
+                    <p class="card-text">{{ result["message"] }}</p>
+                  </div>
+                </div>
+              </div>
+          {% elif code == 102 %}
+            <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+              <div class="card-header">Warning</div>
+                  <div class="card-body">
+                    <h4 class="card-title">{{ result["title"] }}</h4>
+                    <p class="card-text">{{ result["message"] }}</p>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+{% endblock %}

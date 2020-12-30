@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+    Event history
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+      <legend>Event history</legend><br>
+      <form action="/history" method="POST">
+        <div class="form-group">
+          <label for="type">Event type<span class="red">*</span></label><br>
+          <select class="form-control" id="type" name="type">
+            <option value="Tennis">Tennis</option>
+            <option value="Biking">Biking</option>
+            <option value="Running">Running</option>
+            <option value="Pool">Pool</option>
+            <option value="Ping-pong">Ping-pong</option>
+            <option value="Badminton">Badminton</option>
+            <option value="All" selected>All</option>
+          </select>
+          <small id="type" class="form-text text-muted">Please select type of event</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Show history</button>
+      </form>
+    </fieldset>
+</div>
+<script>
+    document.querySelector('select').onchange = function () {
+        document.querySelector('select').value = this.value
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}
+Create
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <fieldset>
+            <form action="/create" method="POST">
+                <legend>Create event</legend><br>
+                <div class="table-responsive">
+                    <div class="form-group">
+                        <label for="type">What<span class="red">*</span></label><br>
+                        <select class="form-control" id="type" name="type">
+                        <option value="Tennis" selected>Tennis</option>
+                        <option value="Biking">Biking</option>
+                        <option value="Running">Running</option>
+                        <option value="Pool">Pool</option>
+                        <option value="Ping-pong">Ping-pong</option>
+                        <option value="Badminton">Badminton</option>
+                        </select>
+                        <small id="type" class="form-text text-muted">Please select type of event</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">When<span class="red">*</span></label><br>
+                        <input type="datetime-local" class="form-control" id="event-time" name="event-time" placeholder="YYYY-MM-DDTHH:MM" required>
+                        <small id="event-time" class="form-text text-muted">Please select date and time for event</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="where">Where<span class="red">*</span></label><br>
+                        <input type="text" class="form-control" id="where" name="venue" required>
+                        <small id="event-time" class="form-text text-muted">Please enter place/venue</small>
+                    </div><br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <script>
+        document.querySelector('select').onchange = function () {
+            document.querySelector('select').value = this.value
+    }
+    </script>
+{% endblock %}

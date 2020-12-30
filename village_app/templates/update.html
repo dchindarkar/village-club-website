@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block title %}
+Update account information
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <form action="/myprofile" method="POST">
+      <fieldset>
+        <legend>Account Information</legend><br>
+        <form action="/myprofile" method="POST">
+          <div class="table-responsive">
+            <table class="table table-hover">
+            <thead class="thead-back">
+              <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">{{ email }}</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td><strong> Title </strong></td>
+                  <td>
+                      <select  id="titles" class="form-control" name="title">
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="">Other</option>
+                      </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong> First Name </strong></td>
+                  <td><input type="text" class="form-control" name="first"></td>
+                </tr>
+                <tr>
+                  <td><strong> Last Name </strong></td>
+                  <td><input type="text" class="form-control" name="last"></td>
+                </tr>
+                <tr>
+                  <td><strong> City </strong></td>
+                  <td>
+                    <input name="city" class="form-control" list="cities">
+                      <datalist id="cities">
+                          <option value="Abbotsford">
+                          <option value="Agassiz">
+                          <option value="Burnaby">
+                          <option value="Chilliwack">
+                          <option value="Coquitlam">
+                          <option value="Delta">
+                          <option value="Hope">
+                          <option value="Langley">
+                          <option value="Maple Ridge">
+                          <option value="Mission">
+                          <option value="North Vancouver">
+                          <option value="New Westminster">
+                          <option value="Pitt Meadows">
+                          <option value="Port Coquitlam">
+                          <option value="Port Moody">
+                          <option value="Surrey">
+                          <option value="White Rock">
+                      </datalist>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong> Contact </strong></td>
+                  <td><input type="tel" class="form-control" id="phone" name="phone"
+                    placeholder="XXX-XXX-XXXX"
+                    aria-describedby="phoneHelp"
+                    pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
+                    <small id="phoneHelp" class="form-text text-muted">Enter phone as XXX-XXX-XXXX</small></td>
+                </tr>
+                <tr>
+                  <td><strong> Age </strong></td>
+                  <td><input type="number" class="form-control" name="age" placeholder="Must be 5 year or older"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </fieldset>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-primary">cancel</button>
+          </fieldset>
+      </fieldset>
+    </form>
+  </div>
+  
+  <script>
+      document.querySelector('select').onchange = function () {
+          document.querySelector('select').value = this.value
+      }
+  </script>
+{% endblock %}

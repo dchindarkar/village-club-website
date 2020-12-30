@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}
+Event View
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <fieldset>
+      <legend>Event view</legend><br>
+      {% if value == 'manage' %}
+      <form action="/eventmanage" method="POST">
+      {% elif value == 'history' %}
+      <form action="/history" method="POST">
+      {% else %}
+      <form action="/eventview" method="POST">
+      {% endif %}
+        <div class="form-group">
+          <label for="type">Event type<span class="red">*</span></label><br>
+          <select class="form-control" id="type" name="type">
+            <option value="Tennis">Tennis</option>
+            <option value="Biking">Biking</option>
+            <option value="Running">Running</option>
+            <option value="Pool">Pool</option>
+            <option value="Ping-pong">Ping-pong</option>
+            <option value="Badminton">Badminton</option>
+            <option value="All" selected>All</option>
+          </select>
+          <small id="type" class="form-text text-muted">Please select type of event</small>
+        </div>
+        {% if value == 'manage' %}
+          <button type="submit" class="btn btn-primary">Manage</button>
+        {% elif value == 'history' %}
+          <button type="submit" class="btn btn-primary">history</button>
+        {% else %}
+          <button type="submit" class="btn btn-primary">View</button>
+        {% endif %}
+      </form>
+    </fieldset>
+</div>
+<script>
+    document.querySelector('select').onchange = function () {
+        document.querySelector('select').value = this.value
+    }
+</script>
+{% endblock %}
